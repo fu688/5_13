@@ -31,6 +31,8 @@
     //创建新的视图控制器
     VCSecond* vcSecond = [[VCSecond alloc] init];
     //使用当前视图控制器的导航控制器对象
+    //vcSecond.modalPresentationStyle = UIModalPresentationFullScreen;
+    //[self presentViewController:vcSecond animated:YES completion:nil];
     [self.navigationController pushViewController:vcSecond animated:YES];
 }
 
@@ -45,3 +47,4 @@
 */
 
 @end
+

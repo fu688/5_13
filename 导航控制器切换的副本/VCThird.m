@@ -24,9 +24,10 @@
 - (void)pressBack {
     //将当前视图控制器弹出，返回上一级界面
     //[self.navigationController popViewControllerAnimated:YES];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
-/*
+    //[self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
+    //[self dismissViewControllerAnimated:YES completion:nil];
+}/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
