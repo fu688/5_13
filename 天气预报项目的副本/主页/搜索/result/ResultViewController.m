@@ -261,54 +261,58 @@
         // 解析数据，将data转换成OC对象，返回的是一个字典
         // 用于接收的字典我在别的方法内已经初始化。若没有初始化字典，接收到的永远都是空值。
         _mainDictionary = [NSJSONSerialization JSONObjectWithData:self.data options:kNilOptions error:nil];
-        self.nameString = _mainDictionary[@"city"];
-        //NSLog(@"%@", self.nameString);
-        self.wheString  = _mainDictionary[@"data"][0][@"wea"];
-        self.temString  = _mainDictionary[@"data"][0][@"tem"];
-        self.dayString = _mainDictionary[@"data"][0][@"week"];
-        self.highTemString = _mainDictionary[@"data"][0][@"tem1"];
-        self.lowTemstring = _mainDictionary[@"data"][0][@"tem2"];
-        
-        timeArray = [[NSMutableArray alloc] init];
-        timeArray = _mainDictionary[@"data"][0][@"hours"];
-        self.timeArray = [[NSMutableArray alloc] init];
-        for (int i = 0; i < timeArray.count; i++) {
-            [self.timeArray addObject:_mainDictionary[@"data"][0][@"hours"][i][@"hours"]];
-            //NSLog(@"%@", self.timeArray[i]);
+        if (_mainDictionary != nil) {
+            
+            
+            self.nameString = _mainDictionary[@"city"];
+            //NSLog(@"%@", self.nameString);
+            self.wheString  = _mainDictionary[@"data"][0][@"wea"];
+            self.temString  = _mainDictionary[@"data"][0][@"tem"];
+            self.dayString = _mainDictionary[@"data"][0][@"week"];
+            self.highTemString = _mainDictionary[@"data"][0][@"tem1"];
+            self.lowTemstring = _mainDictionary[@"data"][0][@"tem2"];
+            
+            timeArray = [[NSMutableArray alloc] init];
+            timeArray = _mainDictionary[@"data"][0][@"hours"];
+            self.timeArray = [[NSMutableArray alloc] init];
+            for (int i = 0; i < timeArray.count; i++) {
+                [self.timeArray addObject:_mainDictionary[@"data"][0][@"hours"][i][@"hours"]];
+                //NSLog(@"%@", self.timeArray[i]);
+            }
+            self.wea_img0Array = [[NSMutableArray alloc] init];
+            for (int i = 0; i < timeArray.count; i++) {
+                [self.wea_img0Array addObject:_mainDictionary[@"data"][0][@"hours"][i][@"wea_img"]];
+            }
+            self.hourTemArray = [[NSMutableArray alloc] init];
+            for (int i = 0; i < timeArray.count; i++) {
+                [self.hourTemArray addObject:_mainDictionary[@"data"][0][@"hours"][i][@"tem"]];
+            }
+            
+            NSMutableArray* array = _mainDictionary[@"data"];
+            self.dayArray = [[NSMutableArray array] init];
+            for (int i = 1; i < array.count; i++) {
+                [self.dayArray addObject:_mainDictionary[@"data"][i][@"week"]];
+            }
+            self.wea_imgArary = [[NSMutableArray alloc] init];
+            for (int i = 1; i < array.count; i++) {
+                [self.wea_imgArary addObject:_mainDictionary[@"data"][i][@"wea_img"]];
+            }
+            self.tem1Array = [[NSMutableArray alloc] init];
+            for (int i = 1; i < array.count; i++) {
+                [self.tem1Array addObject:_mainDictionary[@"data"][i][@"tem1"]];
+            }
+            self.tem2Array = [[NSMutableArray alloc] init];
+            for (int i = 1; i < array.count; i++) {
+                [self.tem2Array addObject:_mainDictionary[@"data"][i][@"tem2"]];
+            }
+            self.air_tipsString = _mainDictionary[@"data"][0][@"air_tips"];
+            self.sunriseString = _mainDictionary[@"data"][0][@"sunrise"];
+            self.sunsetString = _mainDictionary[@"data"][0][@"sunset"];
+            self.humidityString  = _mainDictionary[@"data"][0][@"humidity"];
+            self.air_levelString = _mainDictionary[@"data"][0][@"air_level"];
+            self.visibilityString = _mainDictionary[@"data"][0][@"visibility"];
+            self.pressureString = _mainDictionary[@"data"][0][@"pressure"];
         }
-        self.wea_img0Array = [[NSMutableArray alloc] init];
-        for (int i = 0; i < timeArray.count; i++) {
-            [self.wea_img0Array addObject:_mainDictionary[@"data"][0][@"hours"][i][@"wea_img"]];
-        }
-        self.hourTemArray = [[NSMutableArray alloc] init];
-        for (int i = 0; i < timeArray.count; i++) {
-            [self.hourTemArray addObject:_mainDictionary[@"data"][0][@"hours"][i][@"tem"]];
-        }
-        
-        NSMutableArray* array = _mainDictionary[@"data"];
-        self.dayArray = [[NSMutableArray array] init];
-        for (int i = 1; i < array.count; i++) {
-            [self.dayArray addObject:_mainDictionary[@"data"][i][@"week"]];
-        }
-        self.wea_imgArary = [[NSMutableArray alloc] init];
-        for (int i = 1; i < array.count; i++) {
-            [self.wea_imgArary addObject:_mainDictionary[@"data"][i][@"wea_img"]];
-        }
-        self.tem1Array = [[NSMutableArray alloc] init];
-        for (int i = 1; i < array.count; i++) {
-            [self.tem1Array addObject:_mainDictionary[@"data"][i][@"tem1"]];
-        }
-        self.tem2Array = [[NSMutableArray alloc] init];
-        for (int i = 1; i < array.count; i++) {
-            [self.tem2Array addObject:_mainDictionary[@"data"][i][@"tem2"]];
-        }
-        self.air_tipsString = _mainDictionary[@"data"][0][@"air_tips"];
-        self.sunriseString = _mainDictionary[@"data"][0][@"sunrise"];
-        self.sunsetString = _mainDictionary[@"data"][0][@"sunset"];
-        self.humidityString  = _mainDictionary[@"data"][0][@"humidity"];
-        self.air_levelString = _mainDictionary[@"data"][0][@"air_level"];
-        self.visibilityString = _mainDictionary[@"data"][0][@"visibility"];
-        self.pressureString = _mainDictionary[@"data"][0][@"pressure"];
         /*timeArray = [[NSMutableArray alloc] init];
         timeArray = _mainDictionary[@"data"][0][@"pchilds"][0][@"cchilds"];
         for (int i = 0; i < timeArray.count; i++) {
@@ -320,7 +324,7 @@
         }*/
     } else {
         // 请求失败，打印错误
-        //NSLog(@"%@", error);
+        NSLog(@"%@", error);
     }/*    // 请求成功
     if (error == nil) {
         // 解析数据，将data转换成OC对象，返回的是一个字典

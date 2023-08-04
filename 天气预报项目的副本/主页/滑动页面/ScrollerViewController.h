@@ -51,6 +51,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSMutableArray* dictionaryArray;
 //@property NSDictionary* mainDictionary;
 @property int j;
+@property NSInteger k;
 @end
 
 NS_ASSUME_NONNULL_END

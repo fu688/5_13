@@ -23,6 +23,7 @@
     self.scrollView.scrollEnabled = YES;
     self.scrollView.delegate = self;
     self.scrollView.contentSize = CGSizeMake(393 * self.dictionaryArray.count, self.view.bounds.size.height);
+    self.scrollView.contentOffset = CGPointMake(self.k * 393, 0);
     NSLog(@"%ld", self.dictionaryArray.count);
     self.mainDictionary = [NSDictionary dictionary];
     [self.view addSubview:self.scrollView];
@@ -220,7 +221,7 @@
             for (int i = 0; i < self.timeArray.count; i++) {
                 
                 UILabel *label = [[UILabel alloc] init];
-                label.frame = CGRectMake(20 + 98.5 * i, 10, 98.5, 30);
+                label.frame = CGRectMake(20 + 98.5 * i, 10, 20, 20);
                 [self.scrollView addSubview:label];
                 label.text = self.timeArray[i];
                 label.textColor = [UIColor whiteColor];
@@ -230,7 +231,7 @@
                 [self.scrollView addSubview:imageView];
                 
                 UILabel *label1 = [[UILabel alloc] init];
-                label1.frame = CGRectMake(20 + 100 * i, 110, 98.5, 30);
+                label1.frame = CGRectMake(20 + 98.5 * i, 110, 20, 20);
                 [self.scrollView addSubview:label1];
                 label1.text = self.hourTemArray[i];
                 label1.textColor = [UIColor whiteColor];}

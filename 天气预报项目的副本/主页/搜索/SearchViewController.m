@@ -115,8 +115,8 @@
 - (void)creatUrl {
     //1.创建请求地址
     //NSLog(@"111");
-    NSString *urlString = [NSString stringWithFormat:@"https://geoapi.qweather.com/v2/city/lookup?location=%@&key=5af07eccd3cf4e459fc3df6eba6d615d",textField.text];
-    //处理字符
+    NSString *urlString = [NSString stringWithFormat:@"https://geoapi.qweather.com/v2/city/lookup?location=%@&range=cn&key=5af07eccd3cf4e459fc3df6eba6d615d",textField.text];
+    //处理字符range
     urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     //创建URL
     NSURL *url = [NSURL URLWithString:urlString];
